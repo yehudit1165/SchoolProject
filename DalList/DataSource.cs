@@ -23,6 +23,10 @@
             internal const int QuestionIdStart = 1;
             private static int currentQuestionId = QuestionIdStart;
             internal static int NextQuestionId => currentQuestionId++;
+
+            internal const int StudentQuestionIdStart = 1;
+            private static int currentStudentQuestionId = StudentQuestionIdStart;
+            internal static int NextStudentQuestionId => currentStudentQuestionId++;
         }
     }
 }

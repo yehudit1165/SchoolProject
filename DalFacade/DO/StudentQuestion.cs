@@ -8,6 +8,7 @@ namespace DO
 {
     public record StudentQuestion    /// ישות המייצגת שאלה לנבחן
     (
+        int Id,           ///מספר מזהה ייחודי
         int StudentId,   ///מזהה תלמיד
         int ExamId,     ///מזהה בחינה
         int QuestionId,   ///מזהה שאלה
