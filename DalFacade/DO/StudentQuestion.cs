@@ -15,6 +15,6 @@ namespace DO
         int? SelectedAnswerId    /// Nullable   מזהה תשובה שנבחרה
     )
     {
-        public StudentQuestion() : this(0, 0, 0, null) { }  /// בנאי ריק
+        public StudentQuestion() : this(0,0, 0, 0, null) { }  /// בנאי ריק
     }
 }
