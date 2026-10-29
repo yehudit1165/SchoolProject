@@ -9,7 +9,7 @@ namespace DalApi
     public interface IDal
     {
         IAnswer Answer { get; }
-        IExem Exem { get; }
+        IExam Exam { get; }
         IQuestion Question { get; }
         IStudent Student { get; }
         IStudentQuestion StudentQuestion { get; }

@@ -34,4 +34,27 @@ internal class QuestionImplementation : IQuestion
         }
         return questions;
     }
+
+    public void Update(Question item)
+    {
+        int index = DataSource.Questions.FindIndex(
+            question => question != null && question.Id == item.Id);
+        if (index == -1)
+        {
+            throw new MyException("Question with this ID does not exist");
+        }
+        DataSource.Questions.RemoveAt(index);
+        DataSource.Questions.Add(item);
+    }
+    public void Delete(int id)
+    {
+        int index = DataSource.Questions.FindIndex(
+            question => question != null && question.Id == id);
+        if (index == -1)
+        {
+            throw new MyException("Question with this ID does not exist");
+        }
+        DataSource.Questions.RemoveAt(index);
+    }
+
 }

@@ -2,7 +2,7 @@
 using DO;
 namespace Dal;
 
-internal class ExamImplementation : IExam
+internal class ExamImplementation : DalApi.IExam
 {
     public int Create(Exam item)
     {
@@ -34,4 +34,26 @@ internal class ExamImplementation : IExam
         }
         return exams;
     }
+    public void Update(Exam item)
+    {
+        int index = DataSource.Exams.FindIndex(
+            exam => exam != null && exam.Id == item.Id);
+        if (index == -1)
+        {
+            throw new MyException("Exam with this ID does not exist");
+        }
+        DataSource.Exams.RemoveAt(index);
+        DataSource.Exams.Add(item);
+    }
+    public void Delete(int id)
+    {
+        int index = DataSource.Exams.FindIndex(
+            exam => exam != null && exam.Id == id);
+        if (index == -1)
+        {
+            throw new MyException("Exam with this ID does not exist");
+        }
+        DataSource.Exams.RemoveAt(index);
+    }
+
 }
