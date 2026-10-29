@@ -3,6 +3,6 @@ using static DalApi.ICrud;
 
 namespace DalApi;
 
-public interface IExem : ICrud<Exam>
+public interface IExam : ICrud<Exam>
 {
 }

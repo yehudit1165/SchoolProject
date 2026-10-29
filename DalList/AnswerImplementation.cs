@@ -34,4 +34,26 @@ internal class AnswerImplementation : IAnswer
         }
         return answers;
     }
+    public void Update(Answer item)
+    {
+        int index = DataSource.Answers.FindIndex(
+            answer => answer != null && answer.Id == item.Id);
+        if (index == -1)
+        {
+            throw new MyException("Answer whis this ID does not exist");
+        }
+        DataSource.Answers.RemoveAt(index);
+        DataSource.Answers.Add(item);
+    }
+    public void Delete(int id)
+    {
+        int index = DataSource.Answers.FindIndex(
+            answer => answer != null && answer.Id == id);
+        if (index == -1)
+        {
+            throw new MyException("Answer with this ID does not exist");
+        }
+        DataSource.Answers.RemoveAt(index);
+    }
+
 }

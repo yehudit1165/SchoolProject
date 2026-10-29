@@ -39,4 +39,27 @@ internal class StudentImplementation : IStudent
         }
         return students;
     }
+
+    public void Update(Student item)
+    {
+        int index = DataSource.Students.FindIndex(
+            student => student != null && student.Id == item.Id);
+        if (index == -1)
+        {
+            throw new MyException("Student with this ID does not exist");
+        }
+        DataSource.Students.RemoveAt(index);
+        DataSource.Students.Add(item);
+    }
+    public void Delete(int id)
+    {
+        int index = DataSource.Students.FindIndex(
+            student => student != null && student.Id == id);
+
+        if (index == -1)
+            throw new MyException("Student with this ID does not exist");
+
+        DataSource.Students.RemoveAt(index);
+    }
+
 }

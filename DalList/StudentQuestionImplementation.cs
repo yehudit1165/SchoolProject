@@ -34,4 +34,27 @@ internal class StudentQuestionImplementation: IStudentQuestion
         }
         return studentQuestions;
     }
+
+    public void Update(StudentQuestion item)
+    {
+        int index = DataSource.StudentQuestions.FindIndex(
+            studentQuestion => studentQuestion != null && studentQuestion.Id == item.Id);
+        if (index == -1)
+        {
+            throw new MyException("StudentQuestion with this ID does not exist");
+        }
+        DataSource.StudentQuestions.RemoveAt(index);
+        DataSource.StudentQuestions.Add(item);
+    }
+    public void Delete(int id)
+    {
+        int index = DataSource.StudentQuestions.FindIndex(
+            studentQuestion => studentQuestion != null && studentQuestion.Id == id);
+        if (index == -1)
+        {
+            throw new MyException("StudentQuestion with this ID does not exist");
+        }
+        DataSource.StudentQuestions.RemoveAt(index);
+    }
+
 }
