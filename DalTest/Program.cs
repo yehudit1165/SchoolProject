@@ -2,6 +2,7 @@
 using DO;
 using static DalApi.ICrud;
 using static System.Net.Mime.MediaTypeNames;
+using Tools;
 
 namespace DalTest
 {
@@ -13,6 +14,7 @@ namespace DalTest
             Initialization.Initialize(s_dal);
             string selection = "start";
 
+            Console.ReadLine(); 
             while (selection != "0")
             {
                 PrintMainMenu();
@@ -40,6 +42,10 @@ namespace DalTest
                         SubMenu<Exam>("test", s_dal.Exam, GetTest);
                         break;
 
+                    case "6":
+                        LogManager.CleanLogFolder();
+                        break;
+
                     case "0":
                         break;
 
@@ -57,6 +63,7 @@ namespace DalTest
             Console.WriteLine("3. Answer");
             Console.WriteLine("4. QuestionForStudent");
             Console.WriteLine("5. Test");
+            Console.WriteLine("6. Clean Log");
             Console.WriteLine("0. Exit");
         }
         private static void PrintSecondMenu(string name)
@@ -116,6 +123,10 @@ namespace DalTest
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    LogManager.WriteToLog(
+                    "DalTest",
+                    "SubMenu",
+                    ex.ToString());
                 }
 
             } while (choice != 0);
@@ -230,9 +241,13 @@ namespace DalTest
                 {
                     return int.Parse(Console.ReadLine()!);
                 }
-                catch (FormatException)
+                catch (FormatException ex)
                 {
                     Console.WriteLine("Invalid input, try again.");
+                    LogManager.WriteToLog(
+                    "DalTest",
+                    "GetIntInput",
+                    ex.ToString());
                 }
             }
         }
