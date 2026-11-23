@@ -8,13 +8,11 @@ namespace DalTest
 {
     internal class Program
     {
-        static IDal s_dal = new Dal.DalList();
+        static IDal s_dal = Factory.Get;
         static void Main(string[] args)
         {
-            Initialization.Initialize(s_dal);
+            Initialization.Initialize();
             string selection = "start";
-
-            Console.ReadLine(); 
             while (selection != "0")
             {
                 PrintMainMenu();
