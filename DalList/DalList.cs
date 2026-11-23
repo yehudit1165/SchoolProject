@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    public class DalList : IDal
+    internal sealed class DalList : IDal
     {
+        private static readonly DalList instance = new DalList();
+        public static DalList Instance
+        {
+            get { return instance; }
+        }
+        private DalList() { }
+
         public IAnswer Answer => new AnswerImplementation();
 
         public DalApi.IExam Exam => new ExamImplementation();

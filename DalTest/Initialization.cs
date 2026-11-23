@@ -5,9 +5,9 @@ namespace DalTest;
 public static class Initialization
 {
     private static IDal s_dal=null!;
-    public static void Initialize(IDal dal)
+    public static void Initialize()
     {
-        s_dal = dal;
+        s_dal = Factory.Get;
 
         createExams();
         createStudents();
